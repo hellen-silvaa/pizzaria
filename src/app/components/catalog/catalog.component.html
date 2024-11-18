@@ -1,0 +1,15 @@
+<div class="catalog-container">
+    <div class="search-filter-container">
+      <input type="text" placeholder="Buscar pizza..." [(ngModel)]="searchTerm" (input)="filterPizzas()" />
+      <select [(ngModel)]="selectedFilter" (change)="filterPizzas()">
+        <option value="">Todos</option>
+        <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
+      </select>
+    </div>
+  
+    <div *ngFor="let pizza of filteredPizzas">
+      <h2>{{ pizza.name }}</h2>
+      <p>Ingredients: {{ getIngredientsList(pizza) }}</p>
+      <p>Price: ${{ pizza.price }}</p>
+    </div>
+  </div>
