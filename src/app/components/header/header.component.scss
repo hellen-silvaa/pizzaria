@@ -1,0 +1,32 @@
+nav {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    background-color: #333;
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+
+        li {
+            margin: 0 15px;
+            position: relative;
+
+            a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                padding: 10px 0;
+                display: block;
+
+                &.router-link-active {
+                    border-bottom: 2px solid white;
+                }
+            }
+        }
+    }
+}

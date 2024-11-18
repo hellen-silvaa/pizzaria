@@ -9,7 +9,7 @@ export interface Pizza {
   id: number;
   name: string;
   ingredients: Ingredient[];
-  price: number;
+
 }
 
 @Injectable({
@@ -17,8 +17,8 @@ export interface Pizza {
 })
 export class PizzaService {
   private pizzas: Pizza[] = [
-    { id: 1, name: 'Margherita', ingredients: [{ id: 1, name: 'Tomato' }, { id: 2, name: 'Mozzarella' }], price: 10 },
-    { id: 2, name: 'Pepperoni', ingredients: [{ id: 3, name: 'Pepperoni' }, { id: 4, name: 'Cheese' }], price: 12 },
+    { id: 1, name: 'Margherita', ingredients: [{ id: 1, name: 'Tomato' }, { id: 2, name: 'Mozzarella' }]},
+    { id: 2, name: 'Pepperoni', ingredients: [{ id: 3, name: 'Pepperoni' }, { id: 4, name: 'Cheese' }]},
     // Adicione mais pizzas conforme necessário
   ];
 

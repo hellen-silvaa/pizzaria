@@ -4,14 +4,12 @@
     <div class="create-pizza">
       <h2>Criar Pizza</h2>
       <input type="text" placeholder="Nome da Pizza" [(ngModel)]="newPizza.name" />
-      <input type="number" placeholder="Preço" [(ngModel)]="newPizza.price" />
       <button (click)="createPizza()">Criar</button>
     </div>
   
     <div class="edit-pizza" *ngIf="selectedPizza">
       <h2>Editar Pizza</h2>
       <input type="text" placeholder="Nome da Pizza" [(ngModel)]="selectedPizza.name" />
-      <input type="number" placeholder="Preço" [(ngModel)]="selectedPizza.price" />
       <div>
         <h3>Ingredientes</h3>
         <div *ngFor="let ingredient of ingredients()">
@@ -30,7 +28,6 @@
       <div *ngFor="let pizza of pizzas()">
         <h3>{{ pizza.name }}</h3>
         <p>Ingredientes: {{ getIngredientsList(pizza) }}</p>
-        <p>Preço: ${{ pizza.price }}</p>
         <button (click)="editPizza(pizza)">Editar</button>
         <button (click)="deletePizza(pizza)">Apagar</button>
       </div>

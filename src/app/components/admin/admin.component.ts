@@ -14,7 +14,7 @@ import { IngredientService, Ingredient } from '../../services/ingredient.service
 export class AdminComponent implements OnInit {
   pizzas = signal<Pizza[]>([]);
   ingredients = signal<Ingredient[]>([]);
-  newPizza: Pizza = { id: 0, name: '', ingredients: [], price: 0 };
+  newPizza: Pizza = { id: 0, name: '', ingredients: [] };
   selectedPizza: Pizza | null = null;
 
   constructor(private pizzaService: PizzaService, private ingredientService: IngredientService) {}
@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
   createPizza() {
     this.pizzaService.addPizza(this.newPizza);
     this.pizzas.set(this.pizzaService.getPizzas());
-    this.newPizza = { id: 0, name: '', ingredients: [], price: 0 };
+    this.newPizza = { id: 0, name: '', ingredients: [] };
   }
 
   editPizza(pizza: Pizza) {
@@ -47,15 +47,25 @@ export class AdminComponent implements OnInit {
     this.pizzas.set(this.pizzaService.getPizzas());
   }
 
-  addIngredientToPizza(ingredient: Ingredient) {
-    if (this.selectedPizza && !this.selectedPizza.ingredients.includes(ingredient)) {
-      this.selectedPizza.ingredients.push(ingredient);
+  toggleIngredient(ingredient: Ingredient) {
+    if (this.selectedPizza) {
+      const index = this.selectedPizza.ingredients.findIndex(i => i.id === ingredient.id);
+      if (index === -1) {
+        this.selectedPizza.ingredients.push(ingredient);
+      } else {
+        this.selectedPizza.ingredients.splice(index, 1);
+      }
     }
   }
 
-  removeIngredientFromPizza(ingredient: Ingredient) {
+  addIngredientToPizza(ingredient: Ingredient) {
     if (this.selectedPizza) {
-      this.selectedPizza.ingredients = this.selectedPizza.ingredients.filter(i => i.id !== ingredient.id);
+      const index = this.selectedPizza.ingredients.findIndex(i => i.id === ingredient.id);
+      if (index === -1) {
+        this.selectedPizza.ingredients.push(ingredient);
+      } else {
+        this.selectedPizza.ingredients.splice(index, 1);
+      }
     }
   }
 
