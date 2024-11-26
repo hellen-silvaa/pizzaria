@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AuthGuard } from '../app/services/auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/catalog', pathMatch: 'full' },
   { path: 'catalog', component: CatalogComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/catalog', pathMatch: 'full' }
 ];

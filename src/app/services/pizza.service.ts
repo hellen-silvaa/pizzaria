@@ -19,7 +19,7 @@ export class PizzaService {
   private pizzas: Pizza[] = [
     { id: 1, name: 'Margherita', ingredients: [{ id: 1, name: 'Tomato' }, { id: 2, name: 'Mozzarella' }]},
     { id: 2, name: 'Pepperoni', ingredients: [{ id: 3, name: 'Pepperoni' }, { id: 4, name: 'Cheese' }]},
-    // Adicione mais pizzas conforme necessário
+
   ];
 
   getPizzas(): Pizza[] {

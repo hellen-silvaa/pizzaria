@@ -1,15 +1,20 @@
+
+<app-carousel></app-carousel>
 <div class="catalog-container">
-    <div class="search-filter-container">
-      <input type="text" placeholder="Buscar pizza..." [(ngModel)]="searchTerm" (input)="filterPizzas()" />
-      <select [(ngModel)]="selectedFilter" (change)="filterPizzas()">
-        <option value="">Todos</option>
-        <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
-      </select>
-    </div>
-  
-    <div *ngFor="let pizza of filteredPizzas">
-      <h2>{{ pizza.name }}</h2>
-      <p>Ingredients: {{ getIngredientsList(pizza) }}</p>
-      
-    </div>
+  <div class="search-filter-container">
+    <input type="text" placeholder="Buscar pizza..." [(ngModel)]="searchTerm" (input)="filterPizzas()" />
+    <select [(ngModel)]="selectedFilter" (change)="filterPizzas()">
+      <option value="">Todos</option>
+      <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
+    </select>
   </div>
+
+  <div class="pizza-cards-container">
+    <app-pizza-card
+      *ngFor="let pizza of filteredPizzas"
+      [name]="pizza.name"
+      [ingredients]="getIngredientsList(pizza)"
+      [imageUrl]="'https://static.vecteezy.com/ti/vetor-gratis/p1/27501843-uma-desenho-animado-pizza-personagem-com-uma-fofa-face-vetor.jpg'">
+    </app-pizza-card>
+  </div>
+</div>

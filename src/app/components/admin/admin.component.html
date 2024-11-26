@@ -1,35 +1,44 @@
 <div class="admin-container">
-    <h1>Gerenciamento da Pizzaria</h1>
-  
-    <div class="create-pizza">
-      <h2>Criar Pizza</h2>
-      <input type="text" placeholder="Nome da Pizza" [(ngModel)]="newPizza.name" />
-      <button (click)="createPizza()">Criar</button>
-    </div>
-  
-    <div class="edit-pizza" *ngIf="selectedPizza">
-      <h2>Editar Pizza</h2>
-      <input type="text" placeholder="Nome da Pizza" [(ngModel)]="selectedPizza.name" />
+  <h1>Gerenciamento da Pizzaria</h1>
+
+  <div class="pizza-card">
+    <h2>{{ isEditing ? 'Editar Pizza' : 'Criar Pizza' }}</h2>
+    <form (ngSubmit)="onSubmit()" #pizzaForm="ngForm">
       <div>
-        <h3>Ingredientes</h3>
-        <div *ngFor="let ingredient of ingredients()">
-          <label>
-            <input type="checkbox" [checked]="selectedPizza.ingredients.includes(ingredient)" (change)="addIngredientToPizza(ingredient)" />
+        <label for="name">Nome da Pizza</label>
+        <input type="text" id="name" [(ngModel)]="newPizza.name" name="name" placeholder="Digite o nome da pizza" required>
+      </div>
+      <div>
+        <label for="ingredients">Ingredientes</label>
+        <select id="ingredients" [(ngModel)]="selectedIngredient" name="selectedIngredient" (change)="addIngredient()">
+          <option *ngFor="let ingredient of ingredients()" [value]="ingredient.name" [disabled]="isIngredientSelected(ingredient)">
             {{ ingredient.name }}
-          </label>
+          </option>
+        </select>
+      </div>
+      <div class="selected-ingredients">
+        <h3>Ingredientes Selecionados:</h3>
+        <div class="ingredients-list">
+          <span *ngFor="let ingredient of newPizza.ingredients">
+            {{ ingredient.name }}
+            <button type="button" (click)="removeIngredient(ingredient)">X</button>
+          </span>
         </div>
       </div>
-      <button (click)="updatePizza()">Atualizar</button>
-      <button (click)="selectedPizza = null">Cancelar</button>
-    </div>
-  
-    <div class="pizza-list">
-      <h2>Lista de Pizzas</h2>
-      <div *ngFor="let pizza of pizzas()">
-        <h3>{{ pizza.name }}</h3>
-        <p>Ingredientes: {{ getIngredientsList(pizza) }}</p>
+      <button type="submit">{{ isEditing ? 'Atualizar' : 'Criar' }} Pizza</button>
+      <button *ngIf="isEditing" type="button" (click)="deletePizza(newPizza.id)">Apagar essa Pizza</button>
+    </form>
+  </div>
+
+  <div class="pizza-cards-container">
+    <div class="pizza-card" *ngFor="let pizza of pizzas()">
+      <img src="https://img.freepik.com/vetores-gratis/cute-pizza-super-hero-vector-de-desenho-animado-icon-ilustracao-de-comida-icon-de-ferias-vector-plano-isolado_138676-12786.jpg" alt="Imagem da Pizza" class="pizza-card__image">
+      <div class="pizza-card__content">
+        <h3 class="pizza-card__name">{{ pizza.name }}</h3>
+        <p class="pizza-card__ingredients">{{ getIngredientsList(pizza) }}</p>
         <button (click)="editPizza(pizza)">Editar</button>
-        <button (click)="deletePizza(pizza)">Apagar</button>
+        <button (click)="deletePizza(pizza.id)">Excluir</button>
       </div>
     </div>
   </div>
+</div>

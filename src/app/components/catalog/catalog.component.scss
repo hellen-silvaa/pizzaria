@@ -1,18 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .catalog-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .catalog-container {
-    margin-top: 20px; /* Ajuste o valor conforme necessário */
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh; /* Garante que o contêiner ocupe toda a altura da viewport */
+  display: flex;
+  flex-direction: column;
 }
-  .search-filter-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  
-    input, select {
-      margin: 0 10px;
-      padding: 5px;
+
+.search-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  input {
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .welcome-message {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+    flex: 2;
+    text-align: center;
+  }
+
+  select {
+    padding: 10px;
+    font-size: 16px;
+    flex: 1;
+    margin-left: 20px;
+  }
+}
+
+.pizza-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  flex-grow: 1; /* Permite que o contêiner dos cards cresça para ocupar o espaço restante */
+}
+
+.pizza-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 16px;
+  max-width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: rotateY(15deg) rotateX(15deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__content {
+    padding: 16px;
+  }
+
+  &__name {
+    font-size: 24px;
+    margin: 16px 0 8px;
+  }
+
+  &__ingredients {
+    font-size: 16px;
+    color: #666;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+
+    &:not(:last-child) {
+      margin-right: 10px; /* Adiciona espaçamento entre os botões */
     }
   }
+}

@@ -1,0 +1,13 @@
+button {
+    padding: 10px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 4px;
+  
+    &:not(:last-child) {
+      margin-right: 10px; /* Adiciona espaçamento entre os botões */
+    }
+  }

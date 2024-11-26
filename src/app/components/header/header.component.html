@@ -1,6 +1,13 @@
 <nav>
-    <ul>
-        <li><a routerLink="/catalog" routerLinkActive="router-link-active">Catálogo</a></li>
-        <li><a routerLink="/admin" routerLinkActive="router-link-active">Administrador</a></li>
+    <div class="nav__left">
+      <img src="/src//assets/pizza_processed.jpg" alt="Logo" class="nav__logo">
+    </div>
+    <ul class="nav__center">
+      <li><a routerLink="/catalog" routerLinkActive="router-link-active">Catálogo</a></li>
+      <li><a (click)="onAdminLinkClick()">Administrador</a></li>
     </ul>
-</nav>
+    <div class="nav__right">
+      <fa-icon [icon]="isLoggedIn ? faSignOutAlt : faUser" class="nav__icon" (click)="onUserIconClick()"></fa-icon>
+      <fa-icon [icon]="faShoppingCart" class="nav__icon"></fa-icon>
+    </div>
+  </nav>

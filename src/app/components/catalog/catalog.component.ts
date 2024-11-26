@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PizzaService, Pizza } from '../../services/pizza.service';
 import { IngredientService, Ingredient } from '../../services/ingredient.service';
+import { CarouselComponent } from '../carousel/carousel.component';
+import { PizzaCardComponent } from '../pizza-card/pizza-card.component';
 
 @Component({
   selector: 'app-catalog',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CarouselComponent, PizzaCardComponent],
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss']
 })

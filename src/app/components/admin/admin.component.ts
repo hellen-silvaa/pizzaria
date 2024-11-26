@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PizzaService, Pizza } from '../../services/pizza.service';
 import { IngredientService, Ingredient } from '../../services/ingredient.service';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ButtonComponent],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
@@ -16,6 +17,8 @@ export class AdminComponent implements OnInit {
   ingredients = signal<Ingredient[]>([]);
   newPizza: Pizza = { id: 0, name: '', ingredients: [] };
   selectedPizza: Pizza | null = null;
+  isEditing: boolean = false;
+  selectedIngredient: string = '';
 
   constructor(private pizzaService: PizzaService, private ingredientService: IngredientService) {}
 
@@ -24,52 +27,55 @@ export class AdminComponent implements OnInit {
     this.ingredients.set(this.ingredientService.getIngredients());
   }
 
-  createPizza() {
-    this.pizzaService.addPizza(this.newPizza);
+  onSubmit() {
+    if (this.isEditing) {
+      this.pizzaService.updatePizza(this.newPizza);
+    } else {
+      this.pizzaService.addPizza(this.newPizza);
+    }
+
+    this.resetForm();
     this.pizzas.set(this.pizzaService.getPizzas());
-    this.newPizza = { id: 0, name: '', ingredients: [] };
+  }
+
+  addIngredient() {
+    const ingredient = this.ingredients().find(i => i.name === this.selectedIngredient);
+    if (ingredient && !this.newPizza.ingredients.some(i => i.id === ingredient.id)) {
+      this.newPizza.ingredients.push(ingredient);
+    }
+    this.selectedIngredient = '';
+  }
+
+  removeIngredient(ingredient: Ingredient) {
+    this.newPizza.ingredients = this.newPizza.ingredients.filter(i => i.id !== ingredient.id);
   }
 
   editPizza(pizza: Pizza) {
-    this.selectedPizza = { ...pizza };
+    this.newPizza = { ...pizza };
+    this.isEditing = true;
   }
 
-  updatePizza() {
-    if (this.selectedPizza) {
-      this.pizzaService.updatePizza(this.selectedPizza);
-      this.pizzas.set(this.pizzaService.getPizzas());
-      this.selectedPizza = null;
-    }
-  }
-
-  deletePizza(pizza: Pizza) {
-    this.pizzaService.deletePizza(pizza.id);
+  deletePizza(id: number) {
+    this.pizzaService.deletePizza(id);
     this.pizzas.set(this.pizzaService.getPizzas());
+    this.resetForm();
   }
 
-  toggleIngredient(ingredient: Ingredient) {
-    if (this.selectedPizza) {
-      const index = this.selectedPizza.ingredients.findIndex(i => i.id === ingredient.id);
-      if (index === -1) {
-        this.selectedPizza.ingredients.push(ingredient);
-      } else {
-        this.selectedPizza.ingredients.splice(index, 1);
-      }
-    }
-  }
-
-  addIngredientToPizza(ingredient: Ingredient) {
-    if (this.selectedPizza) {
-      const index = this.selectedPizza.ingredients.findIndex(i => i.id === ingredient.id);
-      if (index === -1) {
-        this.selectedPizza.ingredients.push(ingredient);
-      } else {
-        this.selectedPizza.ingredients.splice(index, 1);
-      }
-    }
+  resetForm() {
+    this.newPizza = { id: 0, name: '', ingredients: [] };
+    this.selectedIngredient = '';
+    this.isEditing = false;
   }
 
   getIngredientsList(pizza: Pizza): string {
     return pizza.ingredients.map(i => i.name).join(', ');
+  }
+
+  getSelectedIngredientsList(): string {
+    return this.newPizza.ingredients.map(i => i.name).join(', ');
+  }
+
+  isIngredientSelected(ingredient: Ingredient): boolean {
+    return this.newPizza.ingredients.some(i => i.id === ingredient.id);
   }
 }
