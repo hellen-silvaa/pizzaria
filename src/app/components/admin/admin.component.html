@@ -15,7 +15,7 @@
         <label for="ingredients">Ingredientes</label>
         <select id="ingredients" [(ngModel)]="selectedIngredient" name="selectedIngredient" (change)="addIngredient()">
           <option *ngFor="let ingredient of ingredients()" [value]="ingredient.name"
-            [disabled]="isIngredientSelected(ingredient)">
+            [disabled]="isIngredientSelected(ingredient)"> <!-- //verifica se o ingrediente já foi selecionado e desabilita -->
             {{ ingredient.name }}
           </option>
         </select>
