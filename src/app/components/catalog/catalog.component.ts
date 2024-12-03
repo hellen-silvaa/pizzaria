@@ -16,11 +16,11 @@ import { PizzaCardComponent } from '../pizza-card/pizza-card.component';
 export class CatalogComponent implements OnInit {
   pizzas: Pizza[] = [];
   ingredients: Ingredient[] = [];
-  searchTerm: string = '';
+  searchTerm: string = ''; //busca digitado pelo usuário 
   selectedFilter: string = '';
-  filteredPizzas: Pizza[] = [];
+  filteredPizzas: Pizza[] = []; // pizzas que passaram pelo filtro
 
-  constructor(private pizzaService: PizzaService, private ingredientService: IngredientService) {}
+  constructor(private pizzaService: PizzaService, private ingredientService: IngredientService) { }
 
   ngOnInit() {
     this.pizzas = this.pizzaService.getPizzas();
@@ -28,6 +28,7 @@ export class CatalogComponent implements OnInit {
     this.filterPizzas();
   }
 
+  // metodo que filtra as pizzas com base no termo de busca e filtro selecionado
   filterPizzas() {
     this.filteredPizzas = this.pizzas.filter(pizza => {
       const matchesSearchTerm = pizza.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
@@ -37,7 +38,13 @@ export class CatalogComponent implements OnInit {
     });
   }
 
+  //metodo para obter a lista de ingredientes depois mapeia para obter somente o nome e junta separa ,
   getIngredientsList(pizza: Pizza): string {
     return pizza.ingredients.map(i => i.name).join(', ');
   }
 }
+
+//testar filtro
+//1. verificar se o nome da pizza || ingrediente corresponde ao termo de busca
+//2. Verificar se algum ingrediente corresponde ao filtro selecionado
+//3. retorna true se a pizza corresponder ao termo

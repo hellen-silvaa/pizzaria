@@ -3,7 +3,7 @@
 .catalog-container {
   padding: 20px;
   font-family: 'Montserrat', sans-serif;
-  min-height: 100vh; /* Garante que o contêiner ocupe toda a altura da viewport */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -42,7 +42,7 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  flex-grow: 1; /* Permite que o contêiner dos cards cresça para ocupar o espaço restante */
+  flex-grow: 1;
 }
 
 .pizza-card {
@@ -90,7 +90,7 @@
     margin-top: 10px;
 
     &:not(:last-child) {
-      margin-right: 10px; /* Adiciona espaçamento entre os botões */
+      margin-right: 10px;
     }
   }
 }

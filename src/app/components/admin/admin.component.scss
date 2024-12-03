@@ -4,6 +4,11 @@
   padding: 20px;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; 
 
   h1 {
     margin-bottom: 20px;
@@ -15,7 +20,10 @@
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: 0 auto 20px;
+    margin: 0 auto 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     h2 {
       margin-bottom: 20px;
@@ -24,9 +32,11 @@
     form {
       display: flex;
       flex-direction: column;
+      width: 100%; 
 
       div {
         margin-bottom: 10px;
+        width: 100%; 
       }
 
       label {
@@ -136,7 +146,7 @@
       margin-top: 10px;
 
       &:not(:last-child) {
-        margin-right: 10px; /* Adiciona espaçamento entre os botões */
+        margin-right: 10px; 
       }
     }
   }

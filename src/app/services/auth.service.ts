@@ -4,8 +4,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private isLoggedIn = false;
+  //variavel que armazena o estado de login
+  private isLoggedIn = false; 
 
+  //metodo que muda o estado de login
   login(): void {
     this.isLoggedIn = true;
   }

@@ -1,8 +1,5 @@
 <div class="carousel">
-    <div class="carousel__images">
-      <img *ngFor="let image of images; let i = index"
-           [src]="image"
-           [class.active]="i === currentIndex"
-           class="carousel__image">
-    </div>
+  <div class="carousel__images">
+    <img *ngFor="let image of images; let i = index" [src]="image" [class.active]="i === currentIndex" alt="Imagem do Carrossel" class="carousel__image">
   </div>
+</div>

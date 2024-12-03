@@ -23,6 +23,7 @@ export class HeaderComponent {
   constructor(private router: Router, private authService: AuthService) {}
 
   onUserIconClick(): void {
+    // Se o usuário estiver logado, ele será deslogado e vice versa
     if (this.isLoggedIn) {
       this.authService.logout();
       this.isLoggedIn = false;
@@ -34,7 +35,9 @@ export class HeaderComponent {
     }
   }
 
+  //aqui metodod de autenticação do admin
   onAdminLinkClick(): void {
+    //se estiver autenticado pode acessar a página de admin
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/admin']);
     } else {

@@ -1,22 +1,22 @@
 .carousel {
-    position: relative;
+  position: relative;
+  width: 100%;
+  height: 75vh; 
+  overflow: hidden;
+
+  &__images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__image {
     width: 100%;
-    height: 75vh; /* 75% da altura da viewport */
-    overflow: hidden;
-  
-    &__images {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-    }
-  
-    &__image {
-      width: 100%;
-      height: 100%; /* Ajusta a altura da imagem para preencher o contêiner */
-      object-fit: contain; /* Mantém a proporção da imagem e se ajusta ao contêiner */
-      display:none;
-  
-      &.active {
-        display: block;
-      }
+    height: 100%; 
+    object-fit: contain; 
+    display: none;
+
+    &.active {
+      display: block;
     }
   }
+}

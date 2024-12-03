@@ -3,7 +3,7 @@ nav {
     display: flex;
     align-items: center;
     background-color: #333;
-    padding: 0 20px; /* Adiciona um pouco de padding nas laterais */
+    padding: 0 20px; 
   
     .nav__left {
       display: flex;
@@ -11,8 +11,8 @@ nav {
     }
   
     .nav__logo {
-      height: 60px; /* Ajuste a altura conforme necessário */
-      background-color: transparent; /* Garante que o fundo do contêiner da imagem seja transparente */
+      height: 60px; 
+      background-color: transparent; 
     }
   
     .nav__center {
@@ -47,7 +47,7 @@ nav {
   
       .nav__icon {
         color: white;
-        font-size: 24px; /* Ajuste o tamanho conforme necessário */
+        font-size: 24px; 
         margin-left: 15px;
         cursor: pointer;
       }
