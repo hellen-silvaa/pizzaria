@@ -1,13 +1,13 @@
-<nav>
-    <div class="nav__left">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmsL0PYBwugHrOptKiHTokqBwLPR5D64lFDg6C_emKGauwOreVeu1cySRYm8QazF6SQzI&usqp=CAU" alt="Logo" class="nav__logo">
-    </div>
-    <ul class="nav__center">
-      <li><a routerLink="/catalog" routerLinkActive="router-link-active">Catálogo</a></li>
-      <li><a (click)="onAdminLinkClick()">Administrador</a></li>
-    </ul>
-    <div class="nav__right">
-      <fa-icon [icon]="isLoggedIn ? faSignOutAlt : faUser" class="nav__icon" (click)="onUserIconClick()"></fa-icon>
-      <fa-icon [icon]="faShoppingCart" class="nav__icon"></fa-icon>
-    </div>
-  </nav>
+<nav> <!-- Barra de navegação principal -->
+  <div class="nav__left"> <!-- Seção esquerda da barra de navegação -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmsL0PYBwugHrOptKiHTokqBwLPR5D64lFDg6C_emKGauwOreVeu1cySRYm8QazF6SQzI&usqp=CAU" alt="Logo" class="nav__logo"> <!-- Logo da aplicação -->
+  </div>
+  <ul class="nav__center"> <!-- Seção central da barra de navegação -->
+    <li><a routerLink="/catalog" routerLinkActive="router-link-active">Catálogo</a></li> <!-- Link para o catálogo, com classe ativa quando a rota está ativa -->
+    <li><a (click)="onAdminLinkClick()">Administrador</a></li> <!-- Link para a seção de administrador, chama o método onAdminLinkClick ao ser clicado -->
+  </ul>
+  <div class="nav__right"> <!-- Seção direita da barra de navegação -->
+    <fa-icon [icon]="isLoggedIn ? faSignOutAlt : faUser" class="nav__icon" (click)="onUserIconClick()"></fa-icon> <!-- Ícone de usuário ou logout, dependendo do estado de login, chama o método onUserIconClick ao ser clicado -->
+    <fa-icon [icon]="faShoppingCart" class="nav__icon"></fa-icon> <!-- Ícone de carrinho de compras -->
+  </div>
+</nav>

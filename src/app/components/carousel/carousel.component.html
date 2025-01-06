@@ -1,5 +1,9 @@
-<div class="carousel">
-  <div class="carousel__images">
+<div class="carousel"> <!-- Contêiner principal do carrossel -->
+  <div class="carousel__images"> <!-- Contêiner para as imagens do carrossel -->
+    <!-- Itera sobre o array de imagens usando *ngFor, renderizando uma tag <img> para cada imagem -->
+    <!-- Atributo [src] define a URL da imagem -->
+    <!-- Atributo [class.active] adiciona a classe 'active' à imagem atual -->
+    <!-- Atributo alt define o texto alternativo da imagem -->
     <img *ngFor="let image of images; let i = index" [src]="image" [class.active]="i === currentIndex" alt="Imagem do Carrossel" class="carousel__image">
   </div>
 </div>

@@ -1,0 +1,132 @@
+{
+  "pizzas": [
+    {
+      "id": "1",
+      "name": "Margherita",
+      "ingredients": [
+        {
+          "id": 1,
+          "name": "Tomato"
+        },
+        {
+          "id": 2,
+          "name": "Mozzarella"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Pepperoni",
+      "ingredients": [
+        {
+          "id": 3,
+          "name": "Pepperoni"
+        },
+        {
+          "id": 2,
+          "name": "Mozzarella"
+        }
+      ]
+    },
+    {
+      "id": 0,
+      "name": "",
+      "ingredients": [
+        {
+          "id": "13",
+          "name": "Bacon"
+        },
+        {
+          "id": "11",
+          "name": "Green Olives"
+        },
+        {
+          "id": "17",
+          "name": "Anchovies"
+        }
+      ]
+    }
+  ],
+  "ingredients": [
+    {
+      "id": "1",
+      "name": "Tomato"
+    },
+    {
+      "id": "2",
+      "name": "Mozzarella"
+    },
+    {
+      "id": "3",
+      "name": "Pepperoni"
+    },
+    {
+      "id": "4",
+      "name": "Basil"
+    },
+    {
+      "id": "5",
+      "name": "Olive Oil"
+    },
+    {
+      "id": "6",
+      "name": "Garlic"
+    },
+    {
+      "id": "7",
+      "name": "Onion"
+    },
+    {
+      "id": "8",
+      "name": "Mushroom"
+    },
+    {
+      "id": "9",
+      "name": "Bell Pepper"
+    },
+    {
+      "id": "10",
+      "name": "Black Olives"
+    },
+    {
+      "id": "11",
+      "name": "Green Olives"
+    },
+    {
+      "id": "12",
+      "name": "Ham"
+    },
+    {
+      "id": "13",
+      "name": "Bacon"
+    },
+    {
+      "id": "14",
+      "name": "Pineapple"
+    },
+    {
+      "id": "15",
+      "name": "Spinach"
+    },
+    {
+      "id": "16",
+      "name": "Artichoke"
+    },
+    {
+      "id": "17",
+      "name": "Anchovies"
+    },
+    {
+      "id": "18",
+      "name": "Sausage"
+    },
+    {
+      "id": "19",
+      "name": "Parmesan"
+    },
+    {
+      "id": "20",
+      "name": "Ricotta"
+    }
+  ]
+}

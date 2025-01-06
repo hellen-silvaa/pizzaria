@@ -4,6 +4,7 @@ import { routes } from './app.routes';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AdminComponent } from './components/admin/admin.component';
+
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 

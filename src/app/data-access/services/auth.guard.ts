@@ -7,14 +7,14 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
+
   canActivate(): boolean {
-    // verifica se o usuário está autenticado se sim permite navegar
     if (this.authService.isAuthenticated()) {
-      return true; 
+      return true;
     } else {
       alert('Você não é administrador. Precisa logar.');
       this.router.navigate(['/']);
-      return false; 
+      return false;
     }
   }
 }

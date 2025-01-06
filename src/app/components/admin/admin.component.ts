@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PizzaService, Pizza } from '../../services/pizza.service';
@@ -11,43 +11,41 @@ import { IngredientService, Ingredient } from '../../services/ingredient.service
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-
 export class AdminComponent implements OnInit {
-  pizzas = signal<Pizza[]>([]); //array de objetos vaziu de pizzas
-  ingredients = signal<Ingredient[]>([]);
+  pizzas: Pizza[] = [];
+  ingredients: Ingredient[] = [];
   newPizza: Pizza = { id: 0, name: '', ingredients: [] };
   selectedPizza: Pizza | null = null;
   isEditing: boolean = false;
   selectedIngredient: string = '';
+  newIngredient: Ingredient = { id: 0, name: '' };
 
   constructor(private pizzaService: PizzaService, private ingredientService: IngredientService) { }
 
-  //  inicializa as listas de pizzas e ingredientes chamando os serviços 
   ngOnInit() {
-    this.pizzas.set(this.pizzaService.getPizzas());
-    this.ingredients.set(this.ingredientService.getIngredients());
+    this.pizzaService.getPizzas().subscribe((pizzas: Pizza[]) => this.pizzas = pizzas);
+    this.ingredientService.getIngredients().subscribe((ingredients: Ingredient[]) => this.ingredients = ingredients);
   }
 
-  // adiciona ou atualiza a pizza 
   onSubmit() {
     if (this.isEditing) {
-      this.pizzaService.updatePizza(this.newPizza);
+      this.pizzaService.updatePizza(this.newPizza).subscribe(() => {
+        this.resetForm();
+        this.pizzaService.getPizzas().subscribe((pizzas: Pizza[]) => this.pizzas = pizzas);
+      });
     } else {
-      this.pizzaService.addPizza(this.newPizza);
+      this.pizzaService.addPizza(this.newPizza).subscribe(() => {
+        this.resetForm();
+        this.pizzaService.getPizzas().subscribe((pizzas: Pizza[]) => this.pizzas = pizzas);
+      });
     }
-
-    // reseta o form para o estado inicial e atualiza a lista de pizzas
-    this.resetForm();
-    this.pizzas.set(this.pizzaService.getPizzas());
   }
 
   addIngredient() {
-    //add o ingrediente se ele não estiver já presente na lista de ingredientes da pizza
-    const ingredient = this.ingredients().find(i => i.name === this.selectedIngredient);
+    const ingredient = this.ingredients.find(i => i.name === this.selectedIngredient);
     if (ingredient && !this.newPizza.ingredients.some(i => i.id === ingredient.id)) {
       this.newPizza.ingredients.push(ingredient);
     }
-    // Reseta o ingrediente selecionado
     this.selectedIngredient = '';
   }
 
@@ -61,9 +59,10 @@ export class AdminComponent implements OnInit {
   }
 
   deletePizza(id: number) {
-    this.pizzaService.deletePizza(id);
-    this.pizzas.set(this.pizzaService.getPizzas());
-    this.resetForm();
+    this.pizzaService.deletePizza(id).subscribe(() => {
+      this.pizzaService.getPizzas().subscribe((pizzas: Pizza[]) => this.pizzas = pizzas);
+      this.resetForm();
+    });
   }
 
   resetForm() {
@@ -72,17 +71,34 @@ export class AdminComponent implements OnInit {
     this.isEditing = false;
   }
 
-  // metodo para retornar uma string com os  ingredientes da pizza
   getIngredientsList(pizza: Pizza): string {
     return pizza.ingredients.map(i => i.name).join(', ');
   }
 
-  // ""  com os nomes dos ingredientes selecionados
   getSelectedIngredientsList(): string {
     return this.newPizza.ingredients.map(i => i.name).join(', ');
   }
-  //verifica se o ingrediente já está selecionado 
+
   isIngredientSelected(ingredient: Ingredient): boolean {
     return this.newPizza.ingredients.some(i => i.id === ingredient.id);
+  }
+
+  addNewIngredient() {
+    this.ingredientService.addIngredient(this.newIngredient).subscribe(() => {
+      this.newIngredient = { id: 0, name: '' };
+      this.ingredientService.getIngredients().subscribe((ingredients: Ingredient[]) => this.ingredients = ingredients);
+    });
+  }
+
+  updateIngredient(ingredient: Ingredient) {
+    this.ingredientService.updateIngredient(ingredient).subscribe(() => {
+      this.ingredientService.getIngredients().subscribe((ingredients: Ingredient[]) => this.ingredients = ingredients);
+    });
+  }
+
+  deleteIngredient(id: number) {
+    this.ingredientService.deleteIngredient(id).subscribe(() => {
+      this.ingredientService.getIngredients().subscribe((ingredients: Ingredient[]) => this.ingredients = ingredients);
+    });
   }
 }

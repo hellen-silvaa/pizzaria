@@ -1,7 +1,7 @@
-<div class="pizza-card">
-    <img [src]="imageUrl" alt="Imagem da Pizza" class="pizza-card__image">
-    <div class="pizza-card__content">
-      <h2 class="pizza-card__name">{{ name }}</h2>
-      <p class="pizza-card__ingredients">{{ ingredients }}</p>
-    </div>
+<div class="pizza-card"> <!-- Contêiner principal do card de pizza -->
+  <img [src]="imageUrl" alt="Imagem da Pizza" class="pizza-card__image"> <!-- Imagem da pizza, definida pela URL passada como propriedade -->
+  <div class="pizza-card__content"> <!-- Contêiner para o conteúdo do card -->
+    <h2 class="pizza-card__name">{{ name }}</h2> <!-- Nome da pizza, passado como propriedade -->
+    <p class="pizza-card__ingredients">{{ ingredients }}</p> <!-- Lista de ingredientes da pizza, passada como propriedade -->
   </div>
+</div>
