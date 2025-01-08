@@ -1,48 +1,26 @@
 {
   "pizzas": [
     {
-      "id": "1",
-      "name": "Margherita",
+      "id": 1,
+      "name": "PRIMEIRA",
       "ingredients": [
         {
-          "id": 1,
-          "name": "Tomato"
+          "id": "15"
         },
         {
-          "id": 2,
-          "name": "Mozzarella"
+          "id": "10"
+        },
+        {
+          "id": "19"
         }
       ]
     },
     {
-      "id": "2",
-      "name": "Pepperoni",
+      "id": 2,
+      "name": "SEGUNDAAAAAAA",
       "ingredients": [
         {
-          "id": 3,
-          "name": "Pepperoni"
-        },
-        {
-          "id": 2,
-          "name": "Mozzarella"
-        }
-      ]
-    },
-    {
-      "id": 0,
-      "name": "",
-      "ingredients": [
-        {
-          "id": "13",
-          "name": "Bacon"
-        },
-        {
-          "id": "11",
-          "name": "Green Olives"
-        },
-        {
-          "id": "17",
-          "name": "Anchovies"
+          "id": "12"
         }
       ]
     }

@@ -23,9 +23,9 @@
         <h3>Ingredientes Selecionados:</h3> <!-- Título da lista de ingredientes selecionados -->
         <div class="ingredients-list"> <!-- Lista de ingredientes selecionados -->
           <span *ngFor="let ingredient of newPizza.ingredients"> <!-- Itera sobre os ingredientes selecionados -->
-            {{ ingredient.name }} <!-- Nome do ingrediente -->
+            {{ getIngredientName(ingredient.id) }} <!-- Nome do ingrediente -->
             <!-- Botão para remover o ingrediente, chama a função removeIngredient -->
-            <button type="button" (click)="removeIngredient(ingredient)">X</button>
+            <button type="button" (click)="removeIngredient(ingredient.id)">X</button>
           </span>
         </div>
       </div>

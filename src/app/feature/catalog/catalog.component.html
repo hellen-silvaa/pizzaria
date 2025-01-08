@@ -4,7 +4,9 @@
     <input type="text" placeholder="Buscar pizza..." [(ngModel)]="searchTerm" (input)="filterPizzas()" />
     <select [(ngModel)]="selectedFilter" (change)="filterPizzas()">
       <option value="">Todos</option>
-      <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
+      <ng-container *ngIf="ingredients$ | async as ingredients">
+        <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
+      </ng-container>
     </select>
   </div>
 

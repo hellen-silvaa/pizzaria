@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faUser, faShoppingCart, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from './../../core/services/auth.service';
 import { CommonModule } from '@angular/common';
-
 
 @Component({
   selector: 'app-header',
@@ -35,9 +34,9 @@ export class HeaderComponent {
     }
   }
 
-  //aqui metodod de autenticação do admin
+  // Método de autenticação do admin
   onAdminLinkClick(): void {
-    //se estiver autenticado pode acessar a página de admin
+    // Se estiver autenticado, pode acessar a página de admin
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/admin']);
     } else {
