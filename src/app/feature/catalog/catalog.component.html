@@ -1,17 +1,30 @@
+<!-- Componente de carrossel -->
 <app-carousel></app-carousel>
+
+<!-- Contêiner principal do catálogo -->
 <div class="catalog-container">
+  
+  <!-- Contêiner para busca e filtro -->
   <div class="search-filter-container">
+    <!-- Campo de entrada para busca de pizzas -->
     <input type="text" placeholder="Buscar pizza..." [(ngModel)]="searchTerm" (input)="filterPizzas()" />
+    
+    <!-- Seleção para filtrar pizzas por ingrediente -->
     <select [(ngModel)]="selectedFilter" (change)="filterPizzas()">
+      <!-- Opção para mostrar todas as pizzas -->
       <option value="">Todos</option>
+      
+      <!-- Contêiner para ingredientes, exibido apenas quando os ingredientes são carregados -->
       <ng-container *ngIf="ingredients$ | async as ingredients">
+        <!-- Opções de ingredientes para filtrar as pizzas -->
         <option *ngFor="let ingredient of ingredients" [value]="ingredient.name">{{ ingredient.name }}</option>
       </ng-container>
     </select>
   </div>
 
+  <!-- Contêiner para os cartões de pizza -->
   <div class="pizza-cards-container">
-    <!-- Passa como propriedade os itens abaixo que serão exibidos no card -->
+    <!-- Componente de cartão de pizza, exibido para cada pizza filtrada -->
     <app-pizza-card
       *ngFor="let pizza of filteredPizzas"
       [name]="pizza.name"
@@ -20,3 +33,13 @@
     </app-pizza-card>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
