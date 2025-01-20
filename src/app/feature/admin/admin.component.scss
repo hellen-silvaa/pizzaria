@@ -7,30 +7,59 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh; 
+  min-height: 100vh;
 
   h1 {
     margin-bottom: 20px;
   }
+
   .flex-container {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
     width: 100%;
-  }
+    max-width: 1200px;
+    margin-bottom: 30px;
 
-  .pizza-card, .todo-container {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 10px;
-    flex: 1;
-  }
-  .todo-container {
-    max-height: 400px; /* Define a altura máxima */
-    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+    > div {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .todo-container {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      margin: 0 auto 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 600px;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 3px;
+      }
+
+      .ingredient-item {
+        padding: 15px;
+        border: 1px solid #eee;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        background: white;
+      }
+    }
   }
 
   .pizza-card {
@@ -39,7 +68,7 @@
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     max-width: 400px;
-    margin: 0 auto 20px; 
+    margin: 0 auto 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,11 +80,11 @@
     form {
       display: flex;
       flex-direction: column;
-      width: 100%; 
+      width: 100%;
 
       div {
         margin-bottom: 10px;
-        width: 100%; 
+        width: 100%;
       }
 
       label {
@@ -165,7 +194,7 @@
       margin-top: 10px;
 
       &:not(:last-child) {
-        margin-right: 10px; 
+        margin-right: 10px;
       }
     }
   }

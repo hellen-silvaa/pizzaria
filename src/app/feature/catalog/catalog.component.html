@@ -25,7 +25,7 @@
   <!-- Contêiner para os cartões de pizza -->
   <div class="pizza-cards-container">
     <!-- Componente de cartão de pizza, exibido para cada pizza filtrada -->
-    <app-pizza-card
+    <app-pizza-card class="pizza-card"
       *ngFor="let pizza of filteredPizzas"
       [name]="pizza.name"
       [ingredients]="getIngredientsList(pizza)"

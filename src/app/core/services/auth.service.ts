@@ -1,7 +1,6 @@
-// Importa o decorador 'Injectable' do Angular para permitir a injeção de dependências
+// 'Injectable'  para permitir a injeção de dependências
 import { Injectable } from '@angular/core';
 
-// Define a classe como um serviço injetável e disponível na raiz do aplicativo
 @Injectable({
   providedIn: 'root'
 })

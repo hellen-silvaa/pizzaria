@@ -32,8 +32,9 @@ export const authenticationGuard: CanActivateFn = () => {
     // Bloqueia o acesso à rota retornando 'false'
     return false;
   }
+  
 };
-
+//aa
 //Sim, o authenticationGuard é uma função que implementa a 
 // interface CanActivateFn. Ela é usada para proteger rotas 
 // no Angular, verificando se o usuário está autenticado 
